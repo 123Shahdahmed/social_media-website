@@ -120,7 +120,7 @@
                 <label for="register-image" class="col-form-label"
                   >Image:</label
                 >
-                <input type="file" class="form-control"id="register-image"/>
+                <input type="file" class="form-control" id="register-image" />
               </div>
             </form>
           </div>
@@ -157,9 +157,7 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">
-              Add new post
-            </h1>
+            <h1 class="modal-title fs-5" id="ModalLaber">Add new post</h1>
             <button
               type="button"
               class="btn-close"
@@ -192,6 +190,7 @@
               <div class="mb-3">
                 <input type="file" class="form-control" id="addImg" />
               </div>
+              <input type="hidden" id="postIdInput" value="" />
             </form>
           </div>
           <div class="modal-footer">
@@ -202,7 +201,12 @@
             >
               Close
             </button>
-            <button type="button" class="btn btn-primary" onclick="addPost()">
+            <button
+              type="button"
+              class="btn btn-primary"
+              onclick="addPost()"
+              id="editBtn"
+            >
               Add
             </button>
           </div>
@@ -210,6 +214,40 @@
       </div>
     </div>
     <!-- //addPostModal// -->
+    <!-- DeleteModal -->
+    <div
+      class="modal fade"
+      id="Deletemodal"
+      tabindex="-1"
+      aria-labelledby="exampleModal"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModal">Delete Post</h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">Are You Sure of Deleting This Post</div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Cancel
+            </button>
+            <button type="button" class="btn btn-danger" id="confirmDeleteBtn">Delete</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- //DeleteModal// -->
     <!-- -----------------------------------//Modals//------------------------------------- -->
 
     <!-- --------------------addPostBtn----------------- -->
@@ -220,7 +258,7 @@
         data-bs-target="#addPostBtn"
         data-bs-whatever="@mdo"
       >
-        <h1>+</h1>
+        <h1 onclick="addEventFun()">+</h1>
       </button>
     </div>
 
@@ -278,7 +316,7 @@
             class="navbar navbar-expand-lg bg-body-tertiary pt-3 rounded shadow bg-light"
           >
             <div class="container-fluid">
-              <a class="navbar-brand" href="#">Tarmeez</a>
+              <a class="navbar-brand" href="#">Posts</a>
               <button
                 class="navbar-toggler"
                 type="button"
@@ -326,9 +364,16 @@
                 </div>
                 <!-- //login btns// -->
                 <!-- logout btns -->
-                <div class="w-100 d-flex justify-content-end align-items-center flex-wrap" id="logoutDiv">
-                  <img src="imgs/360_F_229758328_7x8jwCwjtBMmC6rgFzLFhZoEpLobB6L8.jpg" alt="" id="nav-image">
-                  <b  id="nav-userName" style="margin-right: 5px;">@shahd</b>
+                <div
+                  class="w-100 d-flex justify-content-end align-items-center flex-wrap"
+                  id="logoutDiv"
+                >
+                  <img
+                    src="imgs/360_F_229758328_7x8jwCwjtBMmC6rgFzLFhZoEpLobB6L8.jpg"
+                    alt=""
+                    id="nav-image"
+                  />
+                  <b id="nav-userName" style="margin-right: 5px">@shahd</b>
                   <button
                     id="logout-btn"
                     type="button"
@@ -400,6 +445,6 @@
 
     <!-- import js file -->
     <!-- <script src="js/file.js"></script> -->
-     <script src="js/main.js"></script>
+    <script src="js/main.js"></script>
   </body>
 </html>

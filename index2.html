@@ -19,6 +19,10 @@
 <body style="background-color: rgb(233, 230, 237)">
      <!-- -----------------------------------Modals------------------------------------- -->
     <!-- login Modal -->
+     <!-- alerts -->
+      <div id="Alert" style="position: fixed; top: 20px; right: 20px; z-index: 9999;"></div>
+
+      <!-- -------------Alerrts----------------- -->
     <div
       class="modal fade"
       id="login-model"
@@ -222,7 +226,7 @@
               class="navbar navbar-expand-lg bg-body-tertiary pt-3 rounded shadow bg-light"
             >
               <div class="container-fluid">
-                <a class="navbar-brand" href="index.html">Tarmeez</a>
+                <a class="navbar-brand" href="index.html">Posts</a>
                 <button
                   class="navbar-toggler"
                   type="button"
@@ -299,7 +303,7 @@
                  <!-- post -->
             <div class="post p-0" id="post">
                 <h2 class="mt-4">
-                    <span class=" " id="User_span">@shahdd</span>
+                    <span class="user" id="User_span">@shahdd</span>
                 </h2>
                 <div class="card shadow mt-5">
                   <div class="card-header">
@@ -309,7 +313,7 @@
                       alt=""
                       style="width: 40px; height: 40px"
                     />
-                    <b>@Shaddd</b>
+                    <b >@Shaddd</b>
                   </div>
                   <div class="card-body p-0">
                     <img
@@ -334,6 +338,7 @@
                       />
                     </svg>
                     <span>(3) Comments </span>
+                    
                   </div>
                 </div>
               </div>
@@ -345,6 +350,43 @@
        </div>
        <!-- //container of post// -->
 
+     <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const token = localStorage.getItem("token");
+    const user = JSON.parse(localStorage.getItem("user"));
+    console.log(user)
+    const loginDiv = document.getElementById("loginDiv");
+    const logoutDiv = document.getElementById("logoutDiv");
+    const navUserName = document.getElementById("nav-userName");
+    const navUserImage = document.getElementById("nav-image");
+
+    if (token && user) {
+      loginDiv.style.setProperty("display", "none", "important");
+      logoutDiv.style.setProperty("display", "flex", "important");
+      navUserName.textContent = `@${user.username}`;
+      let authorImage =
+          "imgs/360_F_229758328_7x8jwCwjtBMmC6rgFzLFhZoEpLobB6L8.jpg"; // default
+
+        if (
+          typeof user.profile_image === "string" &&
+          user.profile_image.trim() !== ""
+        ) {
+          authorImage = user.profile_image;
+        }
+      navUserImage.src = authorImage;
+      // console.log("fff"+user.profile_image)
+    } else {
+      loginDiv.style.setProperty("display", "flex", "important");
+      logoutDiv.style.setProperty("display", "none", "important");
+    }
+  });
+
+  function deletedToken() {
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    location.reload(); 
+  }
+</script>
 
        
     
